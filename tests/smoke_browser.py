@@ -1,5 +1,6 @@
 """Real Chromium + Browser Use smoke test. No API key or external website."""
 import asyncio
+import os
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
@@ -24,7 +25,7 @@ async def main():
     threading.Thread(target=server.serve_forever, daemon=True).start()
     async with async_playwright() as pw:
         executable = pw.chromium.executable_path
-    browser = Browser(executable_path=executable, is_local=True, headless=True, allowed_domains=["127.0.0.1"])
+    browser = Browser(executable_path=executable, is_local=True, headless=True, chromium_sandbox=os.getenv("GITHUB_ACTIONS") != "true", allowed_domains=["127.0.0.1"])
     try:
         await browser.start()
         await browser.navigate_to(f"http://127.0.0.1:{server.server_port}")

@@ -1,4 +1,4 @@
 browser-use==0.13.10
 fastapi==0.128.0
 uvicorn==0.40.0
-playwright>=1.58.0,<2
+playwright==1.62.0

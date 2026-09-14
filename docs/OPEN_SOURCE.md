@@ -26,4 +26,7 @@ The contract test checks this ordering. Review the gate before any dependency up
 
 ## Reproducibility boundary
 
-Browser Use, FastAPI and Uvicorn are pinned. Playwright is constrained to its 1.x series; this project does not yet include a complete transitive lockfile. Platform-specific packages and model behavior still need validation for release.
+Browser Use, FastAPI, Uvicorn and Playwright are pinned; this project does not yet include a complete transitive lockfile. Platform-specific packages and model behavior still need validation for release.
+
+
+The ephemeral GitHub Actions fixture disables Chromium's internal sandbox only in its smoke-test browser, which visits a local test page and has no user profile or model credentials. The desktop application's browser retains its default sandbox setting.

@@ -1,0 +1,42 @@
+"""Real Chromium + Browser Use smoke test. No API key or external website."""
+import asyncio
+import threading
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+
+from playwright.async_api import async_playwright
+from browser_use import Browser
+
+
+class Handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        body = b"<html><head><title>AutoShiftSmoke</title></head><body><h1>Browser ready</h1><button>Continue</button></body></html>"
+        self.send_response(200)
+        self.send_header("Content-Type", "text/html")
+        self.end_headers()
+        self.wfile.write(body)
+
+    def log_message(self, *args):
+        pass
+
+
+async def main():
+    server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+    threading.Thread(target=server.serve_forever, daemon=True).start()
+    async with async_playwright() as pw:
+        executable = pw.chromium.executable_path
+    browser = Browser(executable_path=executable, is_local=True, headless=True, allowed_domains=["127.0.0.1"])
+    try:
+        await browser.start()
+        await browser.navigate_to(f"http://127.0.0.1:{server.server_port}")
+        state = await browser.get_browser_state_summary()
+        assert state.title == "AutoShiftSmoke", state.title
+        assert state.screenshot, "Expected a real Chromium screenshot"
+        print("Real Chromium navigation and screenshot passed.")
+    finally:
+        await browser.kill()
+        server.shutdown()
+        server.server_close()
+
+
+if __name__ == "__main__":
+    asyncio.run(main())

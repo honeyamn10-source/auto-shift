@@ -1,0 +1,38 @@
+name: Verify Auto Shift
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      ANONYMIZED_TELEMETRY: "false"
+      BROWSER_USE_SETUP_LOGGING: "false"
+      BROWSER_USE_LOGGING_LEVEL: "critical"
+      DO_NOT_TRACK: "1"
+      PYTHONPATH: .
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Validate Python and browser UI syntax
+        run: |
+          python -m compileall -q autoshift tests setup.py launch.py
+          node --check web/app.js
+      - name: Check API protections, approval gate and upstream compatibility
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+      - name: Install Chromium
+        run: python -m playwright install --with-deps chromium
+      - name: Exercise real browser navigation and screenshots
+        run: python tests/smoke_browser.py

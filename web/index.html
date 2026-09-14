@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Auto Shift — Browser workspace</title><link rel="stylesheet" href="/static/style.css"><script defer src="/static/app.js"></script></head>
+<body>
+<header><a class="brand" href="/"><span class="mark">↗</span> Auto Shift<span class="edition">LOCAL WORKSPACE / 01</span></a><span id="status" class="pill">Connecting</span></header>
+<main>
+<section class="intro"><div><p class="eyebrow">A SECOND PAIR OF HANDS</p><h1>Your browser.<br>Your next move.</h1><p class="lede">Give the browser a task. See the next action.<br>Decide what happens next.</p></div><div class="intro-note"><span class="spark">✳</span><p>One task.<br>One visible browser.<br>You stay in control.</p></div></section>
+<p id="notice" role="status" aria-live="polite"></p>
+<div class="workspace">
+<aside>
+<section class="panel"><div class="section-heading"><span class="number">01</span><h2>Connect a browser</h2></div><label for="domains">Allowed websites <span>Optional</span></label><input id="domains" placeholder="github.com, docs.github.com" autocomplete="off"><p class="hint">Empty means all websites. Exact hostnames only; include sign-in domains if needed.</p><div class="buttons"><button id="open" class="primary">Open browser ↗</button><button id="close" class="quiet">Close</button></div><p class="hint">A separate Chromium window opens on this computer. Sign in there yourself before starting an agent task.</p></section>
+<section class="panel"><div class="section-heading"><span class="number">02</span><h2>Choose the model</h2></div><label for="provider">Connection</label><select id="provider"><option value="openai">OpenAI API</option><option value="ollama">Local Ollama</option></select><label for="model">Model name</label><input id="model" placeholder="Enter a model available to your account" maxlength="100" autocomplete="off"><div id="key-section"><label for="key">API key <span>Memory only</span></label><input type="password" id="key" placeholder="Or set OPENAI_API_KEY in .env" autocomplete="off"><p class="hint">API usage is billed by your provider. A ChatGPT subscription does not supply API access.</p></div><p id="ollama-note" class="hint" hidden>Ollama must be running locally with your chosen model installed. Model capability and computer memory affect results.</p><label class="check"><input id="vision" type="checkbox" checked> Include page images for the model</label></section>
+</aside>
+<div class="main-column">
+<section class="panel composer"><div class="section-heading"><span class="number">03</span><h2>What needs doing?</h2></div><label class="sr-only" for="task">Browser task</label><textarea id="task" maxlength="6000" rows="5" placeholder="For example: open a public project's README and summarize its setup requirements."></textarea><div class="composer-footer"><label for="steps">Step limit <input id="steps" type="number" value="20" min="1" max="50"></label><button id="start" class="primary">Start task ↗</button></div><p class="hint">Page text and images may be sent to your selected model. Do not put passwords or verification codes in your task.</p></section>
+<section id="approval" class="panel approval" hidden><p class="eyebrow">YOUR APPROVAL IS NEEDED</p><h2 id="goal">Review the next action</h2><p class="hint">Check the browser and the proposed action below. Approve only if it matches your task.</p><pre id="actions"></pre><div class="buttons"><button id="approve" class="primary">Approve this action</button><button id="reject" class="quiet">Reject &amp; stop</button></div><p class="hint">If you change the page manually, stop this task and start a fresh one. Approval expires after five minutes.</p></section>
+<section class="panel preview"><div class="section-heading"><h2>Browser snapshot</h2><button id="stop" class="quiet">Stop for manual control</button></div><p id="page-url" class="hint">The latest reviewed step appears here.</p><div id="empty-preview"><span>↗</span><p>Your browser is the real workspace.<br>This panel shows the agent's latest step snapshot.</p></div><img id="screenshot" alt="Browser screenshot captured before the proposed action" hidden></section>
+<section class="panel"><div class="section-heading"><h2>Run notes</h2><button id="export" class="quiet">Export result</button></div><ol id="events"></ol><pre id="result"></pre></section>
+</div>
+</div>
+<footer>Auto Shift · Built on Browser Use · Local, supervised browser automation</footer>
+</main></body></html>

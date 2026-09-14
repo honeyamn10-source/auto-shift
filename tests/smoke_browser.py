@@ -29,7 +29,18 @@ async def main():
     try:
         await browser.start()
         await browser.navigate_to(f"http://127.0.0.1:{server.server_port}")
-        state = await browser.get_browser_state_summary()
+        # Navigation can return before the page title is populated. Wait on the
+        # real DOM condition instead of asserting the first transitional state.
+        async with async_playwright() as pw:
+            connection = await pw.chromium.connect_over_cdp(browser.cdp_url)
+            page = connection.contexts[0].pages[-1]
+            try:
+                await page.wait_for_function("document.title === 'AutoShiftSmoke'", timeout=15000)
+            except Exception:
+                print("Fixture URL:", page.url)
+                print("Fixture body:", (await page.locator("body").inner_text())[:1500])
+                raise
+            state = await browser.get_browser_state_summary(cached=False)
         assert state.title == "AutoShiftSmoke", state.title
         assert state.screenshot, "Expected a real Chromium screenshot"
         print("Real Chromium navigation and screenshot passed.")

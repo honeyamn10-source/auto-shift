@@ -1,6 +1,8 @@
 # Acceptance checklist
 
-The source was authored through the GitHub connection. Local execution and visual inspection were unavailable in the authoring session. Check the repository's CI run for actual results; do not treat the presence of this checklist as a passed test.
+Automated validation passed on 15 September 2026 for code commit `128d1ca5cae3e09558f0e6bf729f79034468050d`: [GitHub Actions run 34939937418](https://github.com/honeyamn10-source/auto-shift/actions/runs/34939937418). This verifies the checks below, not the manual release checklist.
+
+The real-browser check validates the live document title, current URL, agent-visible text and actionable elements, and a Chromium screenshot. Browser Use 0.13.10's summary title reads cached target metadata and can retain the URL; it is not used as proof of the live document title.
 
 ## Automated
 

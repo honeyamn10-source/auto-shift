@@ -29,8 +29,8 @@ async def main():
     try:
         await browser.start()
         await browser.navigate_to(f"http://127.0.0.1:{server.server_port}")
-        # Navigation can return before the page title is populated. Wait on the
-        # real DOM condition instead of asserting the first transitional state.
+        # Browser Use 0.13.10 reads title from cached target metadata, which can
+        # retain the URL. Check the live document and agent-visible DOM instead.
         async with async_playwright() as pw:
             connection = await pw.chromium.connect_over_cdp(browser.cdp_url)
             page = connection.contexts[0].pages[-1]
@@ -41,7 +41,11 @@ async def main():
                 print("Fixture body:", (await page.locator("body").inner_text())[:1500])
                 raise
             state = await browser.get_browser_state_summary(cached=False)
-        assert state.title == "AutoShiftSmoke", state.title
+        assert state.url.rstrip("/") == f"http://127.0.0.1:{server.server_port}", state.url
+        agent_dom = state.dom_state.llm_representation()
+        assert "Browser ready" in agent_dom, agent_dom
+        assert "Continue" in agent_dom, agent_dom
+        assert state.dom_state.selector_map, "Expected an actionable browser element"
         assert state.screenshot, "Expected a real Chromium screenshot"
         print("Real Chromium navigation and screenshot passed.")
     finally:

@@ -1,9 +1,24 @@
-# Auto Shift
-### A browser workspace where you approve the next move.
+<p align="center"><img src="docs/assets/readme-cover.svg" alt="Auto Shift — A visible browser. A reviewed next move." width="100%"></p>
 
-Auto Shift runs a visible Chromium browser on your computer and connects it to a Browser Use agent. Describe a task, review the proposed action, then approve or stop it.
+<h1 align="center">Auto Shift</h1>
+<p align="center"><strong>A visible browser. A reviewed next move.</strong></p>
+<p align="center"><a href="#project-at-a-glance">Overview</a> · <a href="#start-here">Start here</a> · <a href="#project-guide">Project guide</a> · <a href="https://github.com/honeyamn10-source/auto-shift/issues">Issues</a></p>
 
-**Status: first implementation.** Automated checks are in [GitHub Actions](https://github.com/honeyamn10-source/auto-shift/actions). A complete model-driven task, real account sign-in, and desktop operation still need acceptance testing; this is not a claim of production readiness.
+[![CI](https://github.com/honeyamn10-source/auto-shift/actions/workflows/ci.yml/badge.svg)](https://github.com/honeyamn10-source/auto-shift/actions/workflows/ci.yml)
+
+Local Browser Use workspace with approval, cancellation and model choice.
+
+## Project at a glance
+
+| Current scope | Release boundary |
+| --- | --- |
+| **First implementation** | Real model-driven tasks and signed-in desktop flows still need acceptance evidence. |
+
+## Start here
+
+Use the setup commands in the project guide below. Check configuration and current workflow results before deploying.
+
+## Project guide
 
 ## What is included
 

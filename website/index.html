@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>auto-shift — a browser workspace where you approve the next move</title>
+  <meta name="description" content="auto-shift is a browser automation workspace with human-in-the-loop approval. Built on Browser Use, it lets you approve each action before execution with one-use IDs and 5-minute expiry.">
+  <meta name="keywords" content="browser automation, browser-use, human-in-the-loop, approval workflow, AI agent, python">
+  <meta name="author" content="Bittu Sharma">
+  <link rel="canonical" href="https://honeyamn10-source.github.io/auto-shift/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="auto-shift">
+  <meta property="og:title" content="auto-shift — a browser workspace where you approve the next move">
+  <meta property="og:description" content="Browser automation with approval gates. One-use approval IDs, 5-min expiry, Chromium + Browser Use.">
+  <meta property="og:url" content="https://honeyamn10-source.github.io/auto-shift/">
+  <meta property="og:image" content="https://honeyamn10-source.github.io/auto-shift/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="auto-shift — a browser workspace where you approve the next move">
+  <meta name="twitter:description" content="Browser automation with approval gates. One-use approval IDs, 5-min expiry.">
+  <meta name="twitter:image" content="https://honeyamn10-source.github.io/auto-shift/og.png">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#3b82f6">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="sitemap" type="application/xml" href="sitemap.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "auto-shift",
+    "url": "https://honeyamn10-source.github.io/auto-shift/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Linux, macOS, Windows (Python 3.12+)",
+    "description": "Browser automation workspace with human-in-the-loop approval using Browser Use.",
+    "author": { "@type": "Person", "name": "Bittu Sharma" },
+    "license": "https://github.com/honeyamn10-source/auto-shift/blob/main/LICENSE",
+    "codeRepository": "https://github.com/honeyamn10-source/auto-shift"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="auto-shift home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#3b82f6"/><text x="32" y="45" font-family="ui-monospace,Consolas,monospace" font-size="34" font-weight="700" fill="#0b0e14" text-anchor="middle">s</text></svg>
+        auto-shift
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#install">Install</a>
+        <a href="#docs">Docs</a>
+        <a href="https://github.com/honeyamn10-source/auto-shift" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch theme">☀️</button>
+      <button class="nav-burger" type="button" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-inner">
+            <span class="status"><span class="dot" aria-hidden="true"></span> v0.1.0 · MIT · Python 3.12+</span>
+            <h1>A browser workspace where you approve the next move.</h1>
+            <p class="lede">auto-shift wraps Browser Use with a human-in-the-loop approval layer. Every browser action pauses for your explicit consent via one-use IDs with 5-minute expiry. Built for safety-first automation.</p>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="#install">Get started</a>
+              <a class="btn btn-ghost" href="https://github.com/honeyamn10-source/auto-shift" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </div>
+          <div class="term" role="img" aria-label="Terminal capture showing auto-shift approval prompt">
+            <div class="term-bar"><i class="t1"></i><i class="t2"></i><i class="t3"></i><span>auto-shift</span></div>
+            <div class="term-body">
+$ <span class="c1">auto-shift run</span> "search for python tutorials"
+<span class="dim">[01] Navigate to https://google.com</span>
+<span class="dim">[02] Type "python tutorials" in search box</span>
+<span class="dim">[03] Click search button</span>
+<span class="c3">▶ Action requires approval</span>
+<span class="dim">Approval ID: a7f2k9 (expires 5 min)</span>
+<span class="c1">?</span> Approve [a7f2k9]? <span class="c2">y/N</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="wrap">
+        <h2>Features</h2>
+        <div class="grid cards">
+          <article class="card"><h3>Human-in-the-loop</h3><p>Every browser action requires explicit approval before execution. No surprises.</p></article>
+          <article class="card"><h3>One-use approval IDs</h3><p>Each approval request gets a unique ID that expires after 5 minutes. Replay impossible.</p></article>
+          <article class="card"><h3>Browser Use integration</h3><p>Built on <a href="https://github.com/browser-use/browser-use" target="_blank" rel="noopener">Browser Use 0.13.10</a> with Chromium. Reliable, maintained.</p></article>
+          <article class="card"><h3>Multiple LLM providers</h3><p>OpenAI and Ollama adapters. Run locally or with cloud models.</p></article>
+          <article class="card"><h3>Local-first</h3><p>Binds to 127.0.0.1:8765. No external connections without your consent.</p></article>
+          <article class="card"><h3>Test suite</h3><p>Smoke tests, upstream contract tests, and workspace tests included.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="section alt">
+      <div class="wrap">
+        <h2>How it works</h2>
+        <ol class="steps">
+          <li><strong>Start a task</strong> — Describe what you want the browser to do.</li>
+          <li><strong>Review actions</strong> — Each proposed action shows the selector, URL, and intent.</li>
+          <li><strong>Approve or deny</strong> — Use the one-use ID to authorize. Expires in 5 minutes.</li>
+          <li><strong>Watch execution</strong> — Approved actions run in Chromium via Browser Use.</li>
+          <li><strong>Iterate</strong> — Continue the session or start a new task.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="architecture" class="section">
+      <div class="wrap">
+        <h2>Architecture</h2>
+        <div class="grid cards">
+          <article class="card"><h3>Approval Server</h3><p>FastAPI server on 127.0.0.1:8765. Serves approval UI and manages pending requests.</p></article>
+          <article class="card"><h3>Browser Driver</h3><p>Browser Use + Playwright/Chromium. Executes approved actions with full DOM access.</p></article>
+          <article class="card"><h3>LLM Adapters</h3><p>OpenAI (GPT-4o, etc.) and Ollama (local models). Pluggable provider interface.</p></article>
+          <article class="card"><h3>Workspace</h3><p>Isolated browser profiles per session. Cookies, storage, history don't leak.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="install" class="section alt">
+      <div class="wrap">
+        <h2>Install</h2>
+        <pre class="term"><code>$ pip install -r requirements.txt
+$ python -m playwright install chromium
+$ python launch.py "your task here"</code></pre>
+        <p class="note">Requires Python 3.12+. Uses <code>requirements.txt</code> for pinned dependencies.</p>
+      </div>
+    </section>
+
+    <section id="docs" class="section">
+      <div class="wrap">
+        <h2>Documentation</h2>
+        <ul class="doc-links">
+          <li><a href="https://github.com/honeyamn10-source/auto-shift/blob/main/README.md">README</a></li>
+          <li><a href="https://github.com/honeyamn10-source/auto-shift/blob/main/docs/approval.md">Approval flow</a></li>
+          <li><a href="https://github.com/honeyamn10-source/auto-shift/blob/main/docs/workspace.md">Workspace isolation</a></li>
+          <li><a href="https://github.com/honeyamn10-source/auto-shift/blob/main/LICENSE">MIT License</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="wrap">
+      <p>auto-shift v0.1.0 · <a href="https://github.com/honeyamn10-source/auto-shift">GitHub</a> · MIT License</p>
+    </div>
+  </footer>
+  <script src="assets/site.js"></script>
+</body>
+</html>

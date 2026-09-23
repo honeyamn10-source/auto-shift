@@ -11,12 +11,13 @@
 [![Forks](https://img.shields.io/github/forks/honeyamn10-source/auto-shift?style=flat-square&logo=github&label=Forks)](https://github.com/honeyamn10-source/auto-shift/forks)
 [![Issues](https://img.shields.io/github/issues/honeyamn10-source/auto-shift?style=flat-square&logo=github&label=Issues)](https://github.com/honeyamn10-source/auto-shift/issues)
 [![Last Commit](https://img.shields.io/github/last-commit/honeyamn10-source/auto-shift?style=flat-square&logo=github&label=Last%20Commit)](https://github.com/honeyamn10-source/auto-shift/commits/main)
-[![License](https://img.shields.io/github/license/honeyamn10-source/auto-shift?style=flat-square&label=License)](https://github.com/honeyamn10-source/auto-shift/blob/main/LICENSE)
 
 [Repository](https://github.com/honeyamn10-source/auto-shift) · [Issues](https://github.com/honeyamn10-source/auto-shift/issues) · [Pull Requests](https://github.com/honeyamn10-source/auto-shift/pulls) · [Actions](https://github.com/honeyamn10-source/auto-shift/actions)
 
 </div>
 <!-- repo-badges:end -->
+
+
 
 ### A browser workspace where you approve the next move.
 

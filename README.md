@@ -1,3 +1,7 @@
+![Auto Shift](docs/assets/cover.svg)
+
+[Project website](https://honeyamn10-source.github.io/auto-shift/) · [Build results](https://github.com/honeyamn10-source/auto-shift/actions)
+
 # Auto Shift
 ### A browser workspace where you approve the next move.
 

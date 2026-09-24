@@ -24,7 +24,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat-square&logo=playwright&logoColor=white) ![Chromium](https://img.shields.io/badge/Chromium-4285F4?style=flat-square&logo=googlechrome&logoColor=white)
 
-[Architecture](docs/ARCHITECTURE.md) · [Documentation](docs) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md)
+[Architecture](docs/ARCHITECTURE.md) · [Documentation](docs) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md)
 
 </div>
 <!-- professional-meta:end -->
